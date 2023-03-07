@@ -69,3 +69,10 @@ subprocess = parser.add_subparsers(dest='command')
 cmd_add = subprocess.add_parser('add')
 cmd_add.add_argument('title',  type=str)
 cmd_add.add_argument('body',  type=str)
+
+cmd_del = subprocess.add_parser('delete')
+cmd_del.add_argument('id',  type=int)
+
+cmd_find = subprocess.add_parser('find')
+cmd_find.add_argument('--id', type=int)
+cmd_find.add_argument('--date', type=date.fromisoformat)
