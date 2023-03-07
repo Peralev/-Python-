@@ -33,3 +33,32 @@ def write_notes(filename, notes):
     with open(filename, 'w') as file:
         json.dump(notes, file, indent = 3)
 
+def delete(notes, identifier):
+    for note in notes:
+        if note['identifier'] == identifier:
+            notes.remove(note)
+
+def find(notes, identifier):
+    for note in notes:
+        if note['identifier'] == identifier:
+            print(note)
+
+
+def find_date(notes, date):
+    for note in notes:
+        if datetime.fromisoformat(note['date']).date() == date:
+            print(note)
+
+
+def find_all(notes):
+    for note in notes:
+        print(note)
+    
+    
+def update(notes, identifier, title, body, date):
+    for note in notes:
+        if note['identifier'] == identifier:
+            note['title'] = title
+            note['body'] = body
+            note['date'] = date
+            
