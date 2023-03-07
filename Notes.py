@@ -61,4 +61,11 @@ def update(notes, identifier, title, body, date):
             note['title'] = title
             note['body'] = body
             note['date'] = date
-            
+
+
+
+parser = argparse.ArgumentParser(description= "хранилище записок")
+subprocess = parser.add_subparsers(dest='command')
+cmd_add = subprocess.add_parser('add')
+cmd_add.add_argument('title',  type=str)
+cmd_add.add_argument('body',  type=str)
