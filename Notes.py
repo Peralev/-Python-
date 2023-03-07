@@ -76,3 +76,14 @@ cmd_del.add_argument('id',  type=int)
 cmd_find = subprocess.add_parser('find')
 cmd_find.add_argument('--id', type=int)
 cmd_find.add_argument('--date', type=date.fromisoformat)
+
+
+cmd_upd = subprocess.add_parser('update')
+cmd_upd.add_argument('id',  type=int)
+cmd_upd.add_argument('title',  type=str)
+cmd_upd.add_argument('body',  type=str)
+
+args = parser.parse_args()
+if args.command is None:
+    parser.print_usage()
+    exit(1)
