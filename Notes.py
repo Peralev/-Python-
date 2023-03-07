@@ -13,3 +13,23 @@ import os
 
 from datetime import datetime
 from datetime import date
+
+
+def add(notes, title, body, date):
+    if len(notes) == 0:
+        identifier = 1
+    else:
+        identifier = notes[-1]['identifier'] + 1
+
+    notes.append({'identifier':identifier, 'title': title, 'body': body, 'date': date})
+
+
+def read_notes(filename):
+    with open(filename, 'r') as file:
+        return json.load(file)
+    
+
+def write_notes(filename, notes):
+    with open(filename, 'w') as file:
+        json.dump(notes, file, indent = 3)
+
