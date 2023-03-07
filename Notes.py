@@ -87,3 +87,29 @@ args = parser.parse_args()
 if args.command is None:
     parser.print_usage()
     exit(1)
+
+notes_file_name = 'Notes.json'
+if os.path.exists(notes_file_name):
+    notes = read_notes(notes_file_name)
+else:
+    notes = []
+
+if args.command == 'add':
+    add(notes, args.title, args.body, str(datetime.now()))
+
+elif args.command == 'delete':
+    delete(notes, args.id)
+
+elif args.command == 'find':
+    if args.id is not None:
+        find(notes, args.id)
+    elif args.date is not None:
+        find_date(notes, args.date)
+    else:
+        find_all(notes)
+
+elif args.command == 'update':
+    update(notes, args.id, args.title, args.body, str(datetime.now()))
+
+
+write_notes(notes_file_name, notes)
